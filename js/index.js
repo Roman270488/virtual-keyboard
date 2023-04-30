@@ -27,45 +27,69 @@ function layout() {
 }
 layout();
 
-const enKeysArrey = [
-  ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace'],
-  ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\'', 'Del'],
-  ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'Enter'],
-  ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '▲', 'Shift'],
-  ['Ctrl', 'Win', 'Alt', ' ', 'Alt', '◄', '▼', '►', 'Ctrl'],
-];
-const ruKeysArrey = [
-  ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace'],
-  ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\'', 'Del'],
-  ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'],
-  ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '/', '▲', 'Shift'],
-  ['Ctrl', 'Win', 'Alt', ' ', 'Alt', '◄', '▼', '►', 'Ctrl'],
-];
-console.log(ruKeysArrey);
+//* constants and variables */
+const outputField = document.querySelector('.textarea');
 
+const keysArrey = [
+  ['Backquote', '`'], ['Digit1', '1'], ['Digit2', '2'], ['Digit3', '3'], ['Digit4', '4'], ['Digit5', '5'], ['Digit6', '6'], ['Digit7', '7'], ['Digit8', '8'], ['Digit9', '9'], ['Digit0', '0'], ['Minus', '-'], ['Equal', '='], ['Backspace', 'Backspace'],
+  ['Tab', 'Tab'], ['KeyQ', 'q'], ['KeyW', 'w'], ['KeyE', 'e'], ['KeyR', 'r'], ['KeyT', 't'], ['KeyY', 'y'], ['KeyU', 'u'], ['KeyI', 'i'], ['KeyO', 'o'], ['KeyP', 'p'], ['BracketLeft', '['], ['BracketRight', ']'], ['Backslash', '\\'], ['Delete', 'Del'],
+  ['CapsLock', 'CapsLock'], ['KeyA', 'a'], ['KeyS', 's'], ['KeyD', 'd'], ['KeyF', 'f'], ['KeyG', 'g'], ['KeyH', 'h'], ['KeyJ', 'j'], ['KeyK', 'k'], ['KeyL', 'l'], ['Semicolon', ';'], ['Quote', "'"], ['Enter', 'Enter'],
+  ['ShiftLeft', 'Shift'], ['KeyZ', 'z'], ['KeyX', 'x'], ['KeyC', 'c'], ['KeyV', 'v'], ['KeyB', 'b'], ['KeyN', 'n'], ['KeyM', 'm'], ['Comma', ','], ['Period', '.'], ['Slash', '/'], ['ArrowUp', '▲'], ['ShiftRight', 'Shift'],
+  ['ControlLeft', 'Ctrl'], ['MetaLeft', 'Win'], ['AltLeft', 'Alt'], ['Space', ' '], ['AltRight', 'Alt'], ['ArrowLeft', '◄'], ['ArrowDown', '▼'], ['ArrowRight', '►'], ['ControlRight', 'Ctrl'],
+];
+
+const exceptionButtons = ['Backquote', 'Backspace', 'Tab', 'Delete', 'CapsLock', 'Enter', 'ShiftLeft', 'ShiftRight', 'AltLeft', 'ControlLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'ArrowRight', 'ControlRight'];
+
+/* выводит на экран кнопки клавиатуры из массива keysArrey */
 function keyboardInitialization() {
   let out = '';
-  enKeysArrey.forEach((elem) => {
-    for (let i = 0; i < elem.length; i++) {
-      if (elem[i] === ' ') {
-        out += `<div class="key space">${elem[i]}</div>`;
-      } else if (elem[i] === 'backspace') {
-        out += `<div class="key backspace">${elem[i]}</div>`;
-      } else if (elem[i] === 'Tab') {
-        out += `<div class="key tab">${elem[i]}</div>`;
-      } else if (elem[i] === 'CapsLock') {
-        out += `<div class="key capslock">${elem[i]}</div>`;
-      } else if (elem[i] === 'Enter') {
-        out += `<div class="key enter">${elem[i]}</div>`;
-      } else if (elem[i] === 'Shift') {
-        out += `<div class="key shift">${elem[i]}</div>`;
-      } else if (elem[i] === 'Ctrl' && i === elem.length - 1) {
-        out += `<div class="key ctrl">${elem[i]}</div>`;
-      } else {
-        out += `<div class="key">${elem[i]}</div>`;
-      }
+  keysArrey.forEach((elem) => {
+    if (elem[1] === ' ') {
+      out += `<div class="key space" data="${elem[0]}">${elem[1]}</div>`;
+    } else if (elem[1] === 'Backspace') {
+      out += `<div class="key backspace" data="${elem[0]}">${elem[1]}</div>`;
+    } else if (elem[1] === 'Tab') {
+      out += `<div class="key tab" data="${elem[0]}">${elem[1]}</div>`;
+    } else if (elem[1] === 'CapsLock') {
+      out += `<div class="key capslock" data="${elem[0]}">${elem[1]}</div>`;
+    } else if (elem[1] === 'Enter') {
+      out += `<div class="key enter" data="${elem[0]}">${elem[1]}</div>`;
+    } else if (elem[1] === 'Shift') {
+      out += `<div class="key shift" data="${elem[0]}">${elem[1]}</div>`;
+    } else if (elem[0] === 'ControlRight') {
+      out += `<div class="key ctrl" data="${elem[0]}">${elem[1]}</div>`;
+    } else {
+      out += `<div class="key" data="${elem[0]}">${elem[1]}</div>`;
     }
   });
   document.querySelector('#keyboard').innerHTML = out;
 }
 keyboardInitialization();
+
+/* добавляет цвет в момент нажатия на кнопку */
+function changesColorWhenDown(event) {
+  document.querySelector(`#keyboard .key[data="${event.code}"]`).classList.add('active');
+}
+
+/* удаляет цвет в момент отжатия кнопки */
+function changesColorWhenUp() {
+  document.querySelectorAll('#keyboard .key').forEach((elem) => {
+    elem.classList.remove('active');
+  });
+}
+
+/* выводит текст в textarea по нажатию на клавиатуру за исключением shift, ctrl, alt и т.д. */
+function outTextClickKeyboard(event) {
+  if (exceptionButtons.includes(event.code) === false) outputField.textContent += event.key;
+}
+
+/* выводит текст в textarea по нажатию на мышку за исключением shift, ctrl, alt и т.д. */
+document.querySelectorAll('#keyboard .key').forEach((elem) => {
+  elem.addEventListener('mousedown', () => {
+    if (exceptionButtons.includes(elem.getAttribute('data')) === false) outputField.textContent += elem.textContent;
+  });
+});
+
+document.addEventListener('keydown', changesColorWhenDown);
+document.addEventListener('keydown', outTextClickKeyboard);
+document.addEventListener('keyup', changesColorWhenUp);

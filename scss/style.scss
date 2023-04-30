@@ -18,6 +18,7 @@
   width: 686px;
   padding: 5px;
   font: 700 16px/30px 'Roboto';
+  background: #ececec;
   border: 2px solid #000;
   border-radius: 5px;
 }
@@ -32,6 +33,7 @@
   margin: 3px;
   padding: 3px;
   border-radius: 3px;
+  transition: background 1s transform 1s;
 }
 
 .space {
@@ -59,10 +61,17 @@
 .key:hover {
   background: #ccc;
   cursor: pointer;
-  transition: background .5s, transform .1s;
+  // transition: background .5s, transform .3s;
 }
 
 .key:active {
+  background: #a5a4a4;
+  transform: scale(0.95);
+  // transition: background .1s, transform .3s;
+}
+
+.active {
+  background: #a5a4a4;
   transform: scale(0.95);
 }
 
