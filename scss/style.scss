@@ -10,6 +10,9 @@
   width: 700px;
   height: 200px;
   margin-bottom: 20px;
+  padding: 5px;
+  word-break: break-all;
+  border: 1px solid #000;
 }
 
 #keyboard {
@@ -33,7 +36,7 @@
   margin: 3px;
   padding: 3px;
   border-radius: 3px;
-  transition: background 1s transform 1s;
+  transition: all .5s;
 }
 
 .space {
@@ -61,20 +64,25 @@
 .key:hover {
   background: #ccc;
   cursor: pointer;
-  // transition: background .5s, transform .3s;
+  // transition: all 1s;
 }
 
 .key:active {
   background: #a5a4a4;
   transform: scale(0.95);
-  // transition: background .1s, transform .3s;
+  // transition: all 1s;
 }
 
 .active {
   background: #a5a4a4;
   transform: scale(0.95);
+  transition: all .1s;
 }
 
 .blockInfo {
   margin-top: 10px;
+}
+
+.none {
+  display: none;
 }
