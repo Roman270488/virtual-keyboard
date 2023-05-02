@@ -1,0 +1,81 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.textarea {
+  width: 700px;
+  height: 200px;
+  margin-bottom: 20px;
+  padding: 5px;
+  word-break: break-all;
+  border: 1px solid #000;
+}
+
+#keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 686px;
+  padding: 5px;
+  font: 700 16px/30px "Roboto";
+  background: #ececec;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  min-width: 30px;
+  border: 1px solid #000;
+  margin: 3px;
+  padding: 3px;
+  border-radius: 3px;
+  transition: all 0.5s;
+}
+
+.space {
+  width: 307px;
+}
+
+.backspace {
+  width: 100px;
+}
+
+.tab {
+  width: 56px;
+}
+
+.capslock,
+.enter,
+.shift {
+  width: 87px;
+}
+
+.ctrl {
+  width: 43px;
+}
+
+.key:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+
+.key:active {
+  background: #a5a4a4;
+  transform: scale(0.95);
+}
+
+.active {
+  background: #a5a4a4;
+  transform: scale(0.95);
+}
+
+.blockInfo {
+  margin-top: 10px;
+}
