@@ -26,7 +26,6 @@ function layout() {
   body.append(textarea, keyboard, blockInfo);
 }
 layout();
-
 const keyBoard = document.querySelector('#keyboard');
 
 const keysArreysEn = [
@@ -78,7 +77,9 @@ function keyboardInitialization(layoutKey) {
   });
   keyBoard.innerHTML = out;
 }
-// keyboardInitialization(keysArreysEn);
+
+keyboardInitialization(keysArreysEn);
+
 window.addEventListener('load', () => {
   if (localStorage.getItem('lang') === 'Ru') {
     keyboardInitialization(keysArreysRu);
