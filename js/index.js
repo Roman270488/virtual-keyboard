@@ -78,12 +78,10 @@ function keyboardInitialization(layoutKey) {
   keyBoard.innerHTML = out;
 }
 
-keyboardInitialization(keysArreysEn);
-
 window.addEventListener('load', () => {
-  if (localStorage.getItem('lang') === 'Ru') {
+  if (localStorage.getItem('lang') === 'rus') {
     keyboardInitialization(keysArreysRu);
-  } else if (localStorage.getItem('lang') === 'En') {
+  } else if (localStorage.getItem('lang') === 'eng') {
     keyboardInitialization(keysArreysEn);
   }
 });
@@ -94,15 +92,15 @@ let lang = localStorage.getItem('lang');
 /* меняет раскладку на клавиатуре */
 document.addEventListener('keydown', (event) => {
   if (event.code === 'ControlLeft') flag = true;
-  if (event.code === 'AltLeft' && flag === true && lang === 'En') {
-    localStorage.setItem('lang', 'Ru');
+  if (event.code === 'AltLeft' && flag === true && lang === 'eng') {
+    localStorage.setItem('lang', 'rus');
     flag = false;
-    lang = 'Ru';
+    lang = 'rus';
     keyboardInitialization(keysArreysRu);
-  } else if (event.code === 'AltLeft' && flag === true && lang === 'Ru') {
-    localStorage.setItem('lang', 'En');
+  } else if (event.code === 'AltLeft' && flag === true && lang === 'rus') {
+    localStorage.setItem('lang', 'eng');
     flag = false;
-    lang = 'En';
+    lang = 'eng';
     keyboardInitialization(keysArreysEn);
   }
 });
