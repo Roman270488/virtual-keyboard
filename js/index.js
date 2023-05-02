@@ -77,6 +77,9 @@ function keyboardInitialization(layoutKey) {
   });
   keyBoard.innerHTML = out;
 }
+keyboardInitialization(keysArreysEn);
+let flag = false;
+let lang = 'eng';
 
 window.addEventListener('load', () => {
   if (localStorage.getItem('lang') === 'rus') {
@@ -86,21 +89,18 @@ window.addEventListener('load', () => {
   }
 });
 
-let flag = false;
-let lang = localStorage.getItem('lang');
-
 /* меняет раскладку на клавиатуре */
 document.addEventListener('keydown', (event) => {
   if (event.code === 'ControlLeft') flag = true;
   if (event.code === 'AltLeft' && flag === true && lang === 'eng') {
+    lang = 'rus';
     localStorage.setItem('lang', 'rus');
     flag = false;
-    lang = 'rus';
     keyboardInitialization(keysArreysRu);
   } else if (event.code === 'AltLeft' && flag === true && lang === 'rus') {
+    lang = 'eng';
     localStorage.setItem('lang', 'eng');
     flag = false;
-    lang = 'eng';
     keyboardInitialization(keysArreysEn);
   }
 });
